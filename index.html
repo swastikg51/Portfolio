@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Owbinduarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Owbinduarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Wimdows', sans-serif;
+        }
+
+        /* navbar styling */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 999;
+            padding: 30px 0;
+            font-family: 'Wimdows';
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .navbar.sticky {
+            padding: 15px 0;
+            background: rgb(17, 128, 132);
+        }
+
+        .navbar .max-width {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo a {
+            color: black;
+            font-size: 35px;
+            font-weight: 600;
+        }
+
+        .navbar .logo a span {
+            color: rgb(220, 20, 183);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.sticky .logo a span {
+            color: #30783612;
+        }
+
+        .navbar .menu li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .navbar .menu li a {
+            display: block;
+            color: #355756;
+            font-size: 18px;
+            font-weight: 500;
+            margin-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            color: rgb(62, 42, 58);
+        }
+
+        .navbar.sticky .menu li a:hover {
+            color: #673e5f;
+        }
+
+        /* menu btn styling */
+        .menu-btn {
+            color: #599393;
+            font-size: 23px;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 947px) {
+            .menu-btn {
+                display: block;
+                z-index: 999;
+            }
+
+            .menu-btn i.active:before {
+                content: "\f00d";
+            }
+
+            .navbar .menu {
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                left: -100%;
+                top: 0;
+                background: #111;
+                text-align: center;
+                padding-top: 80px;
+                transition: all 0.3s ease;
+            }
+
+            .navbar .menu.active {
+                left: 0;
+            }
+
+            .navbar .menu li {
+                display: block;
+            }
+
+            .navbar .menu li a {
+                display: inline-block;
+                margin: 20px 0;
+                font-size: 25px;
+            }
+
+
+        }
+
+        @media(max-width:500px) {
+            .home .home-content .text-1 {
+                font-size: 7px;
+            }
+        }
+
+
+        .home {
+            display: flex;
+            background: url("swastik.jpg") no-repeat center;
+            background-origin: right;
+            height: 110vh;
+            color: #419398;
+            min-height: 500px;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'windows', sans-serif;
+
+        }
+
+        .home-content {
+            margin-top: 200px;
+            padding: 50px;
+        }
+
+        .home .max-width {
+            width: 100%;
+            display: flex;
+        }
+
+        .home .max-width .row {
+            margin-right: 0;
+        }
+
+        .home .home-content .text-1 {
+            font-size: 27px;
+        }
+
+        .home .home-content .text-2 {
+            font-size: 75px;
+            font-weight: 200;
+            margin-left: -3px;
+        }
+
+        .home .home-content .text-3 {
+            font-size: 40px;
+            margin: 5px 0;
+        }
+
+        .home .home-content .text-3 span {
+            color: rgb(226, 185, 193);
+            font-weight: 500;
+        }
+
+        .home .home-content a {
+            display: inline-block;
+            background: rgb(167, 53, 129);
+            color: #7a266a;
+            font-size: 25px;
+            padding: 12px 36px;
+            margin-top: 20px;
+            font-weight: 400;
+            border-radius: 6px;
+            border: 2px solid rgb(116, 84, 109);
+            transition: all 0.3s ease;
+        }
+
+        .home .home-content a:hover {
+            color: rgb(129, 58, 121);
+            background: none;
+        }
+
+        @media(max-width:350px) {
+            body {
+                width: 100%;
+            }
+
+            .home {
+                width: 108%;
+            }
+
+            .home .home-content .text-2 {
+                font-size: 60px;
+                line-height: 1.5;
+            }
+        }
+
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .about .about-heading {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .about .about-heading h1 {
+            font-size: 50px;
+            font-family: 'windows', sans-serif;
+            
+        }
+
+        .about .about-heading h4 {
+            font-family: 'windows', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            color: rgb(90, 55, 81);
+
+        }
+
+        .about-right a {
+            display: inline-block;
+            background: rgb(188, 113, 159);
+            color: #267184;
+            font-size: 25px;
+            padding: 12px 36px;
+            margin-top: 20px;
+            font-weight: 400;
+            border-radius: 6px;
+            border: 2px solid rgb(221, 103, 188);
+            transition: all 0.3s ease;
+        }
+
+        .about-right a:hover {
+            color: rgb(127, 100, 119);
+            background: none;
+        }
+
+        .about-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .about-right p {
+            font-family: 'windows', sans-serif;
+        }
+
+        .about-right {
+            padding: 80px;
+            width: 600px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .about-right h1{
+            margin-bottom: 20px;
+        }
+
+        @media(max-width:700px) {
+            .about-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .about-right {
+                width: auto;
+                padding: 0%;
+            }
+            .about-right h1{
+                margin-top: 20px;
+            }
+            .about-right{
+                text-align: justify;
+            }
+
+
+        }
+
+        .services-heading {
+            text-align: center;
+        }
+
+        .services-heading h1 {
+            font-size: 50px;
+            font-family: 'windows', sans-serif;
+            margin-top: 40px;
+            color: rgb(59, 96, 98);
+            line-height: 1.8;
+        }
+
+        .services-heading h4 {
+            font-family: 'Wimdows', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            color: rgb(130, 50, 90);
+        }
+
+        .services {
+            background-color: black;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .services-cards {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .services-cards .services-card-1 {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            text-align: center;
+            background-color: #222;
+            color: rgb(64, 129, 141);
+            padding: 15px;
+            transition: all 0.3s ease;
+            line-height: 1.5;
+            border-radius: 10px;
+        }
+
+        .services-cards .services-card-1 h1 {
+            padding: 20px;
+        }
+
+        .services-cards .services-card-1 i {
+            font-size: 50px;
+            padding: 30px;
+
+        }
+
+        .services-card-1:hover {
+
+            background-color: rgb(42, 69, 72);
+            transform: scale(1.05);
+
+        }
+
+        @media(max-width:800px) {
+            .services {
+                width: 100%;
+            }
+
+            .services-cards {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+        }
+
+        .skills-heading {
+            text-align: center;
+        }
+
+        .skills-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 10px;
+        }
+
+        .skills-heading h1 {
+            font-size: 50px;
+            font-family: 'windows', sans-serif;
+            margin-top: 40px;
+            color: black;
+            line-height: 1.5;
+
+        }
+
+        .skills-heading h4 {
+            font-family: 'windows', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            color: rgb(119, 66, 110);
+
+        }
+
+        .skills-content-left {
+            width: 600px;
+            text-align: justify;
+            text-align: left;
+            font-family: 'windows', sans-serif;
+            line-height: 1.5;
+        }
+
+        .skills-content-right {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            column-gap: 50px;
+        }
+
+        .skills-content-right p {
+            display: grid;
+            width: 130px;
+            text-align: center;
+            background: rgb(74, 42, 66);
+            color: #497f87;
+            font-size: 15px;
+            padding: 12px 36px;
+            margin-top: 20px;
+            font-weight: 400;
+            border-radius: 6px;
+            border: 2px solid rgb(122, 77, 108);
+            transition: all 0.3s ease;
+        }
+
+        .skills-content-right p:hover {
+
+            color: rgb(140, 73, 131);
+            background-color: rgb(32, 99, 111);
+        }
+
+        @media(max-width:600px) {
+            .skills-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .skills-content-left {
+                width: 300px;
+                text-align: justify;
+                margin-top: 30px;
+                margin: 0%;
+            }
+            .skills-content-right{
+                column-gap: 50px;
+            }
+        }
+
+        .contact-us-heading {
+            text-align: center;
+        }
+
+        .contact-us-heading h1 {
+            font-size: 50px;
+            font-family: 'windows', sans-serif;
+            margin-top: 40px;
+            color: black;
+            line-height: 1.5;
+        }
+
+        .contact-us-heading h2 {
+            font-family: 'windows', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            color: rgb(87, 48, 76);
+        }
+
+        .contact-us-info {
+            display: flex;
+            flex-direction: row;
+            text-align: justify;
+            padding: 20px;
+        }
+
+        .contact-us-info i {
+            font-size: 20px;
+margin: 5px;
+margin-right: 5px;
+            
+        }
+
+        .contact-us-info p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .form-first .input-name {
+            padding: 7px;
+            border: 1px solid rgb(61, 96, 106);
+            border-radius: 6px;
+            outline: none;
+
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-first .input-email {
+            padding: 7px;
+            border: 1px solid rgb(83, 137, 147);
+            border-radius: 6px;
+            outline: none;
+
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .input-sub {
+            padding: 7px;
+            border: 1px solid rgb(72, 120, 120);
+            border-radius: 6px;
+            outline: none;
+            width: 460px;
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .input-message {
+            padding: 7px;
+            border: 1px solid rgb(46, 69, 71);
+            border-radius: 6px;
+            outline: none;
+            width: 460px;
+            font-size: 17px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            height: 100px;
+
+        }
+
+        .form-heading {
+            font-family: 'windows', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .submit-btn button {
+            color: #2e97a1;
+            display: block;
+            width: 160px !important;
+            height: 45px;
+            outline: none;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            flex-wrap: nowrap;
+            background: rgb(62, 45, 56);
+            border: 2px solid rgb(67, 34, 58);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn button:hover {
+            color: rgb(77, 45, 70);
+            background-color: rgb(25, 38, 39);
+        }
+        .contact-us-class{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            line-height: 1.5;
+        }
+        .navbar.sticky{
+            background-color: rgb(169, 86, 147);
+            padding: 20px;
+            transition: all 3s ease;
+        }
+        @media(max-width:800px){
+            .contact-us-class{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                
+                margin-top: 0;
+                line-height: 1.5;
+                
+            }
+            .input-sub{
+                width: 250px;
+            }
+            .input-message{
+                width: 250px;
+            }
+            .input-email{
+                margin-top: 10px;
+                width: 250px;
+            }
+            .input-name{
+                width: 250px;
+            }
+            .form{
+                justify-content: center;
+            }
+           .form-main{
+              
+               text-align:center ;
+           }
+           .form-heading h2{
+               text-align: center;
+           }
+           .submit-btn{
+               display: flex;
+               justify-content: center;
+           }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="max-width">
+            <div class="logo"><a href="#">Portfolio</a></div>
+            <ul class="menu">
+                <li><a href="#home" class="menu-btn">Home</a></li>
+                <li><a href="#about" class="menu-btn">About</a></li>
+                <li><a href="#services" class="menu-btn">Services</a></li>
+                <li><a href="#skills" class="menu-btn">Skills</a></li>
+               
+                <li><a href="#contact" class="menu-btn">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="home" id="home">
+
+        <div class="home-content">
+            <div class="text-1">Hello, my name is</div>
+            <div class="text-2">Swastik</div>
+            <div class="text-3">And I'm a Student</div> 
+        </div>
+
+    </div>
+
+    <div class="about" id="about">
+        <div class="about-heading">
+            <h1>About Me</h1>
+            <h4>who i am</h4>
+
+        </div>
+    </div>
+    <div class="about-content">
+        <div class="about-left">
+        </div>
+        <div class="about-right">
+            <h1>I'm Swastik</h1>
+            <p>Hey there, I am a passionate web developer and java developer with a keen interest in taking up that as
+                my career. I'm Pursuing Computer Engineering from Pimpri Chinchwad College of Engineering and
+    Research.<br></br>Started Internship in Oasis Infobyte as a Web Development and Designing 
+    Skillset: Frontend Developer(Html, Css , JavaScript) ,CPP, NodeJs , MongoDB, SQL ,PL/SQL ,Python. <br>
+    
+    <h2>Project</h2>
+  </header>
+  <p>Portfolio Website<br>
+    A portfolio website is a unique way to showcase your work and let others know about yourself. A portfolio website made by using Frontend language Html,Css. <br>
+    Functionalities: Intro, Services,Blog and Contact me.
+    It is a Showcase of mywork ,skills,Capabilities . <br> </br>
+   
+            </p>
+            <a href="#">Download Cv</a>
+        </div>
+    </div>
+    </div>
+    <div class="skills" id="skills">
+        <div class="skills-heading">
+            <h1>My Skills</h1>
+            </div>
+            <div class="skills-content">
+                <p>Html</p>
+                <p>Css</p>
+                <p>JavaScript</p>
+                <p>Java</p>
+                <p>Python</p>
+                <p>MySQL</p>
+                <p>C/C++</p>
+                <p>PL/SQL</p>
+                
+
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-us-heading" id="contact">
+        <h1>Contact Me</h1>
+    </div>
+
+    <div class="contact-us-class">
+        <div class="contact-flex">
+        <div class="contact-us-info">
+            <i class="fas fa-user"></i>
+            <div class="contact-info">
+                <p>Name</p>
+                <p style="color: #333; font-weight: lighter;">Swastik Ghonsikar</p>
+            </div>
+
+        </div>
+
+        <div class="contact-us-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-info">
+                <p>Address</p>
+                <p style="color: #333; width: 250px; font-weight: lighter;"> Nano Homes, Ravet Pune-411044</p>
+            </div>
+
+        </div>
+
+        <div class="contact-us-info">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-info">
+                <p>Email</p>
+                <p style="color: #333; font-weight: lighter;">swastikg51@gmail.com</p>
+            </div>
+
+        </div>
+        </div>
+
+        <div class="form">
+            <div class="form-heading">
+                <h2>Message Me</h2>
+            </div>
+            <div class="form-main">
+                <div class="form-first">
+                    <input type="text" placeholder="Name" class="input-name" required>
+                    <input type="text" class="input-email" placeholder="Email" required>
+                </div>
+                <div class="form-second">
+                    <input type="text" class="input-sub" placeholder="Subject" required>
+                </div>
+
+                <div class="form-third">
+                    <textarea cols="10" rows="10" class="input-message" placeholder="Message" required></textarea>
+                </div>
+                <div class="submit-btn">
+                    <button type="submit">Send Messsage</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<script> 
+
+
+
+$(window).scroll(function () {
+                // sticky navbar on scroll script
+                if (this.scrollY > 40) {
+                    $('.navbar').addClass("sticky");
+                } else {
+                    $('.navbar').removeClass("sticky");
+                }
+
+                // scroll-up button show/hide script
+                if (this.scrollY > 500) {
+                    $('.scroll-up-btn').addClass("show");
+                } else {
+                    $('.scroll-up-btn').removeClass("show");
+                }
+            });
+            $('.menu-btn').click(function () {
+                $('.navbar .menu').toggleClass("active");
+                $('.menu-btn i').toggleClass("active");
+            });
+
+
+
+; </script>
+</body>
+
+</html>
